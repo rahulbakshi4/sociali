@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base{
+    img,picture{
+        max-width: 100%;
+        display: block;
+    },
+    body{
+        line-height: 1.5;
+        min-height: 100vh;
+        max-width: 75rem;
+        margin-inline: auto;
+    }
+
+}
