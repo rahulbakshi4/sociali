@@ -15,3 +15,16 @@
     }
 
 }
+@layer components{
+    .btn{
+       @apply py-1 px-1  border-2 border-black text-sm leading-5 font-medium rounded-md    
+       hover:shadow-btn-sm  focus:outline-none
+       active:shadow-none active:outline-none
+       transition-all duration-300 ease-in-out }
+       
+    .btn-dark{
+     @apply
+         bg-dark text-white hover:text-black hover:bg-white
+    }
+    
+}
