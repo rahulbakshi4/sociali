@@ -14,8 +14,8 @@ export const Navbar = () => {
                             <span className="material-icons-round">home</span>
                             <span className="material-icons">bookmark</span>
                             <span className="material-icons">explore</span>
-                            <img onClick={() => navigate(`/profile/${user.username}`, { replace: true, state: { _id: user._id } })}
-                                className="rounded-full w-8 h-8 cursor-pointer" src={user.avatarUrl} alt="user avatar" />
+                            <img onClick={() => navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user?._id } })}
+                                className="rounded-full w-8 h-8 cursor-pointer" src={user?.avatarUrl} alt="user avatar" />
                         </li>
                     </ul>
                 </nav>
@@ -24,8 +24,8 @@ export const Navbar = () => {
                     <span className="material-icons">bookmark</span>
                     <span className="material-icons">explore</span>
 
-                    <img onClick={() => navigate(`/profile/${user.username}`, { replace: true, state: { _id: user._id } })}
-                        className="rounded-full w-8 h-8 cursor-pointer" src={user.avatarUrl} alt="user avatar" />
+                    <img onClick={() => navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user._id } })}
+                        className="rounded-full w-8 h-8 cursor-pointer" src={user?.avatarUrl} alt="user avatar" />
                 </nav>
 
             </div>
