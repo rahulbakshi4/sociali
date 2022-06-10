@@ -10,7 +10,6 @@ export const UserProfile = () => {
     const dispatch = useDispatch()
     const urlID = useParams()
     const userID = location?.state._id
-    // const { name, username, bio, avatarUrl, followers, following, portfolio } = userProfile
 
     useEffect(() => {
 
@@ -31,7 +30,7 @@ export const UserProfile = () => {
                         <div className="flex-grow flex flex-col gap-6 p-4">
                             <div className="flex justify-between gap-4">
                                 <h2 className="text-3xl font-light">{userProfile?.username}</h2>
-                                {userID === user._id ? <button className="btn ">Edit Profile</button> : <button className="btn btn-dark ">Follow</button>}
+                                {userID === user?._id ? <button className="btn ">Edit Profile</button> : <button className="btn btn-dark ">Follow</button>}
                             </div>
                             <ul className="pt-2 flex list-none justify-between">
                                 <li> <span className="font-medium">0</span> Post</li>

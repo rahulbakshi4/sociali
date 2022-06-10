@@ -38,7 +38,7 @@ export const signupHandler = function (schema, request) {
       password,
       ...rest,
       bio: "",
-      avatarUrl: "",
+      avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
       portfolio: "",
       followers: [],
       following: [],

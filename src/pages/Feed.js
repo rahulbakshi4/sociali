@@ -9,7 +9,7 @@ export const Feed = () => {
     const navigate = useNavigate()
     const { user } = useSelector((store) => store.auth)
     const { allUsers } = useSelector((store) => store.users)
-    const suggestedUsers = allUsers?.filter((currUser) => currUser._id !== user._id)
+    const suggestedUsers = allUsers?.filter((currUser) => currUser._id !== user?._id)
     useEffect(() => {
         dispatch(getAllUsers());
     }, []);
