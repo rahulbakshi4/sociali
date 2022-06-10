@@ -10,7 +10,6 @@ export const UserProfile = () => {
     const dispatch = useDispatch()
     const urlID = useParams()
     const userID = location?.state._id
-
     useEffect(() => {
 
         dispatch(getUser(userID))
@@ -38,7 +37,7 @@ export const UserProfile = () => {
                                 <li><span className="font-medium">{userProfile?.following.length}</span> Following</li>
                             </ul>
                             <div>
-                                <p className="font-semibold">{name}</p>
+                                <p className="font-semibold">{userProfile?.name}</p>
                                 <p className="text-sm">{userProfile?.bio}</p>
                             </div>
                             <div>

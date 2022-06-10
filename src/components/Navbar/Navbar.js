@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { getUser } from "../../features/users/usersSlice"
 export const Navbar = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const { user } = useSelector((store) => store.auth)
     return (
         <div className="fixed z-10 h-max w-full lg:top-0 md:top-0 bottom-0 ">
@@ -24,7 +26,7 @@ export const Navbar = () => {
                     <span className="material-icons">bookmark</span>
                     <span className="material-icons">explore</span>
 
-                    <img onClick={() => navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user._id } })}
+                    <img onClick={() => { dispatch(getUser(user._id)); navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user._id } }) }}
                         className="rounded-full w-8 h-8 cursor-pointer" src={user?.avatarUrl} alt="user avatar" />
                 </nav>
 
