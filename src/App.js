@@ -1,4 +1,4 @@
-import { Feed, Home, Login, SignUp } from "./pages";
+import { Feed, Home, Login, SignUp, UserProfile } from "./pages";
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Mockman from "mockman-js";
@@ -17,6 +17,7 @@ function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/mockman" element={<MockAPI />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile/:username" element={<UserProfile />} />
       </Routes>
       <Toaster />
     </Router>

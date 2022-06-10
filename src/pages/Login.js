@@ -26,7 +26,7 @@ export const Login = () => {
         <div className="App bg-light min-h-screen m-0">
             <div className="flex lg:max-w-7xl max-w-full  mx-auto items-center justify-center gap-8 p-6 flex-col lg:flex-row h-screen">
                 <HeroImgContainer />
-                <div className="lg:w-1/2 border-black border-solid  border-2 rounded-xl p-8 bg-white  shadow-3xl">
+                <div className="lg:w-1/2 border-black border-solid  border-2 rounded-xl p-8 bg-white shadow-3xl">
                     <div className="py-4">
                         <h2 className="text-3xl">Put your story out there with <span className="text-5xl font-bold italic">sociali</span></h2>
                         <h3 className="text-center text-xl font-semibold mt-4"> Welcome Back!</h3>

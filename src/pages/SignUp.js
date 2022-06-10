@@ -17,7 +17,7 @@ export const SignUp = () => {
         if (password !== confirmPassword) {
             toast.error('Passwords didn\'t not match')
         }
-        else if (token && password === confirmPassword) {
+        else if (password === confirmPassword) {
             dispatch(signUp(formData))
             toast.success('Signed Up Successfully!', { duration: 1500, position: 'bottom-center' });
             navigate('/')
