@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllUsersService, getUserService } from "../../services/userServices";
+import { getAllUsersService, getUserPostService, getUserService } from "../../services/userServices";
 
 const initialState = {
     userProfile: null,
     allUsers: [],
+    userPosts: []
 };
 
 export const getUser = createAsyncThunk(
@@ -29,6 +30,16 @@ export const getAllUsers = createAsyncThunk(
         }
     }
 );
+export const getUserPost = createAsyncThunk('users/getUserPost',
+    async ({ username }, ThunkAPI) => {
+        try {
+            const response = await getUserPostService(username);
+            return response.data
+        }
+        catch (error) {
+            return ThunkAPI.rejectWithValue(error.response.data)
+        }
+    })
 export const usersSlice = createSlice({
     name: "users",
     initialState,
@@ -43,6 +54,9 @@ export const usersSlice = createSlice({
         },
         [getAllUsers.fulfilled]: (state, action) => {
             state.allUsers = action.payload.users
+        },
+        [getUserPost.fulfilled]: (state, action) => {
+            state.userPosts = action.payload.posts
         }
     }
 })
