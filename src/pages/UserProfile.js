@@ -1,21 +1,25 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
-import { Navbar } from "../components"
-import { getUser } from "../features/users/usersSlice"
+import { BookmarkIcon, ListIcon, Navbar, PostContainer } from "../components"
+import { getUser, getUserPost } from "../features/users/usersSlice"
 export const UserProfile = () => {
     const { user } = useSelector((store) => store.auth)
-    const { userProfile } = useSelector((store) => store.users)
+    const { userProfile, userPosts } = useSelector((store) => store.users)
     const location = useLocation()
     const dispatch = useDispatch()
-    const urlID = useParams()
+    const username = useParams()
     const userID = location?.state._id
+    const [active, setActive] = useState({
+        posts: true,
+        bookmarks: false
+    })
     useEffect(() => {
 
         dispatch(getUser(userID))
+        dispatch(getUserPost(username))
 
-    }, [urlID])
-
+    }, [username])
     return (
         <>
             <Navbar />
@@ -32,7 +36,7 @@ export const UserProfile = () => {
                                 {userID === user?._id ? <button className="btn ">Edit Profile</button> : <button className="btn btn-dark ">Follow</button>}
                             </div>
                             <ul className="pt-2 flex list-none justify-between">
-                                <li> <span className="font-medium">0</span> Post</li>
+                                <li> <span className="font-medium">{userPosts?.length}</span> Post</li>
                                 <li><span className="font-medium">{userProfile?.followers.length}</span> Followers</li>
                                 <li><span className="font-medium">{userProfile?.following.length}</span> Following</li>
                             </ul>
@@ -45,20 +49,21 @@ export const UserProfile = () => {
                             </div>
                         </div>
                     </div>
-                    <ul className="flex p-2 justify-center gap-10 border-t-2 border-gray-800 w-full">
-                        <li className="flex items-center gap-4 cursor-pointer text-sm uppercase text-center w-32 py-2 px-2 rounded-md hover:bg-light hover:font-medium">
-                            <span className="material-icons-outlined">
-                                view_list
-                            </span>
+                    {userID === user?._id && (<ul className="flex p-4 justify-around text-center gap-10 border-t-2 border-gray-800 w-full">
+                        <li className={`profile-options w-32 ${active.posts ? 'bg-light font-medium' : 'hover:bg-light hover:font-medium'}`}
+                            onClick={() => setActive({ posts: true, bookmarks: false })}>
+                            <ListIcon />
                             <span>Posts</span>
                         </li>
-                        <li className="flex items-center gap-4 cursor-pointer text-sm uppercase text-center w-40 py-2 px-2 rounded-md hover:bg-light hover:font-medium ">
-                            <span className="material-icons-outlined font-extralight">
-                                bookmark_border
-                            </span>
+                        <li className={`profile-options w-40 ${active.bookmarks ? 'bg-light font-medium' : 'hover:bg-light hover:font-medium'}`}
+                            onClick={() => setActive({ posts: false, bookmarks: true })}>
+                            <BookmarkIcon size={18} />
                             <span>Bookmarks</span>
                         </li>
-                    </ul>
+                    </ul>)}
+                    <div className="pt-1">
+                        {userPosts.map((post) => <PostContainer key={post.id} {...post} />)}
+                    </div>
                 </div>
             </div>
 

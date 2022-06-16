@@ -6,3 +6,6 @@ export const getAllUsersService = async () => {
 export const getUserService = async (userID) => {
     return await axios.get(`/api/users/${userID}`);
 };
+export const getUserPostService = async (username) => {
+    return await axios.get(`/api/posts/user/${username}`);
+};

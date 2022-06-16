@@ -8,15 +8,18 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: uuid(),
+    _id: '2nTtzJ',
+    userID: 'zQDggFs',
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      'Guess who is scrolling product hunt like instagram at 4 in the morning.',
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
+    name: "James Bay",
+    username: "jbay",
+    avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [
@@ -41,15 +44,128 @@ export const posts = [
     ],
   },
   {
-    _id: uuid(),
+    _id: 'EkmiEy',
+    userID: 'IZY5ebh',
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      `"It's never too early for ice cream." - Michael Scott`,
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
+    name: "Kyal Cameron",
+    username: "cameronkyal",
+    avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801977/kyle.png",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: '9owJJb',
+    userID: 'T7-yOVS',
+    content:
+      "People say money can't buy happiness. They Lie. Money buys Coffee, Coffee makes Me Happy!",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "Lilly Mai Morales",
+    username: "lilly_morales",
+    avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801818/lily.png",
+
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: '9owJJb',
+    userID: 'C9NXXrK',
+    content:
+      "ah man they decided to shutdown Atom. I kinda liked atom.",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "Eliott Roman",
+    username: "eliott_roman",
+    avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654802197/elliot.png",
+
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: '9owJJb',
+    userID: '9UW3Oba',
+    content:
+      "Just got my hands on Tiago Forte's new book 'Building A Second Brain', can't wait to read it over the weekend. ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "Aubree Ayala",
+    username: "aubree04",
+    avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801438/aubree.png",
 
     comments: [
       {
