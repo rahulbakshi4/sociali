@@ -30,7 +30,7 @@
         @apply cursor-not-allowed opacity-60 shadow-none transition-none hover:bg-dark hover:text-white
     }
     .feed-post{
-        @apply border-2 border-gray-800 rounded-md mt-4
+        @apply border-2 border-gray-800 rounded-md mb-4
     }
     .profile-post{
         @apply border-t-2 border-gray-800
@@ -38,5 +38,8 @@
     .profile-options{
         @apply flex justify-center  items-center gap-4 cursor-pointer text-sm uppercase text-center p-2
         rounded-md transition-all duration-300 ease-in-out
+    }
+    .modal-container{
+        @apply w-screen h-screen absolute z-50 top-0 left-0 right-0 bg-opacity-50 bg-neutral-700
     }
 }

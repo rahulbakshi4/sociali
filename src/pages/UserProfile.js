@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react"
+import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
-import { useLocation, useParams } from "react-router-dom"
-import { BookmarkIcon, ListIcon, Navbar, PostContainer } from "../components"
-import { getUser, getUserPost } from "../features/users/usersSlice"
+import { useLocation, useParams, useNavigate } from "react-router-dom"
+import { BookmarkIcon, ProfileDetailsModal, ListIcon, LogoutIcon, Modal, Navbar, PostContainer } from "../components"
+import { logout } from "../features/auth/authSlice"
+import { getAllBookmarks } from "../features/posts/postSlice"
+import { getUser, getUserPost, follow, unfollow } from "../features/users/usersSlice"
+import { openModal } from "../features/utilities/utilitySlice"
+import { isFollowing } from "../utilities/isFollowing"
 export const UserProfile = () => {
-    const { user } = useSelector((store) => store.auth)
+    const { user, token } = useSelector((store) => store.auth)
     const { userProfile, userPosts } = useSelector((store) => store.users)
+    const { modalState } = useSelector((store) => store.utilities)
     const location = useLocation()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const username = useParams()
     const userID = location?.state._id
@@ -14,12 +21,28 @@ export const UserProfile = () => {
         posts: true,
         bookmarks: false
     })
+    const [children, setChildren] = useState(null)
     useEffect(() => {
-
         dispatch(getUser(userID))
         dispatch(getUserPost(username))
+        dispatch(getAllBookmarks())
 
-    }, [username])
+    }, [dispatch, username, userProfile?.bookmarks])
+    const followHandler = () => {
+        dispatch(follow({ token, userID: userProfile?._id }))
+        toast.success(`You are now following @${userProfile?.username} `)
+    }
+    const unfollowHandler = () => {
+        dispatch(unfollow({ token, userID: userProfile?._id }))
+        toast.success(`You unfollowed @${userProfile?.username}`)
+    }
+    const logoutHandler = () => {
+        dispatch(logout())
+        localStorage.removeItem('userDetails')
+        toast.success(`Logged out successfully`, { position: 'bottom-center' })
+        navigate('/')
+    }
+
     return (
         <>
             <Navbar />
@@ -27,18 +50,28 @@ export const UserProfile = () => {
                 <div className="bg-white max-w-3xl lg:mt-20 md:mt-20 border-2 border-gray-800 mx-auto  rounded-lg">
                     <div className="flex p-4 items-center">
                         <div className="flex lg:px-6 md:px-6 px-4 lg:basis-5/12">
-                            <img className="rounded-full w-44 h-44 object-cover" src={userProfile?.avatarUrl} alt="" />
+                            <img className="rounded-full w-44 h-44 object-cover" src={userProfile?.avatarUrl} alt="user avatar" />
                         </div>
 
                         <div className="flex-grow flex flex-col gap-6 p-4">
                             <div className="flex justify-between gap-4">
                                 <h2 className="text-3xl font-light">{userProfile?.username}</h2>
-                                {userID === user?._id ? <button className="btn ">Edit Profile</button> : <button className="btn btn-dark ">Follow</button>}
+                                {userID === user?._id ? (<div className="flex gap-6 items-center">
+                                    <button className="btn ">Edit Profile</button>
+                                    <span onClick={() => logoutHandler()} className="cursor-pointer hover:bg-light p-2 rounded-full"><LogoutIcon /></span></div>)
+                                    : !isFollowing(userProfile?.followers, user?.username) ?
+                                        (<button onClick={() => followHandler()} className="btn btn-dark ">Follow</button>)
+                                        : (<button onClick={() => unfollowHandler()} className="btn btn-dark ">Unfollow</button>)}
                             </div>
                             <ul className="pt-2 flex list-none justify-between">
                                 <li> <span className="font-medium">{userPosts?.length}</span> Post</li>
-                                <li><span className="font-medium">{userProfile?.followers.length}</span> Followers</li>
-                                <li><span className="font-medium">{userProfile?.following.length}</span> Following</li>
+                                <li onClick={() => { userProfile?.followers.length !== 0 && dispatch(openModal()); setChildren(<ProfileDetailsModal data={userProfile?.followers} />) }} className="cursor-pointer">
+                                    <span className="font-medium">{userProfile?.followers.length}</span>{" "}
+                                    {userProfile?.followers.length === 1 ? 'Follower' : 'Followers'}
+                                </li>
+                                <li onClick={() => { userProfile?.following.length !== 0 && dispatch(openModal()); setChildren(<ProfileDetailsModal data={userProfile?.following} />) }} className="cursor-pointer">
+                                    <span className="font-medium">{userProfile?.following.length}</span> Following
+                                </li>
                             </ul>
                             <div>
                                 <p className="font-semibold">{userProfile?.name}</p>
@@ -62,11 +95,12 @@ export const UserProfile = () => {
                         </li>
                     </ul>)}
                     <div className="pt-1">
-                        {userPosts.map((post) => <PostContainer key={post.id} {...post} />)}
+                        {active.posts && (userPosts?.length !== 0 ? (userPosts.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No posts found</p>))}
+                        {active.bookmarks && (userProfile?.bookmarks.length !== 0 ? (userProfile?.bookmarks.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No bookmarks found</p>))}
                     </div>
+                    <Modal state={modalState} children={children} />
                 </div>
             </div>
-
         </>
     )
 }

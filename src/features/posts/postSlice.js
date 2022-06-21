@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { addBookmarkService, getAllBookmarkService, removeBookmarkService } from "../../services/postServices";
 import { deletePostService, getAllPostService, newPostService } from '../../services/postServices'
 
 const initialState = {
     userPosts: [],
     allPosts: [],
+    bookmarkedPosts: []
 }
 
 export const getAllPosts = createAsyncThunk(
@@ -38,6 +40,44 @@ export const deletePost = createAsyncThunk('posts/deletePost', async ({ token, p
     }
 })
 
+export const getAllBookmarks = createAsyncThunk(
+    "posts/getBookmarks",
+    async ({ token }, { rejectWithValue }) => {
+        try {
+            const response = await getAllBookmarkService(token);
+            return response.data.bookmarks;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const addBookmark = createAsyncThunk(
+    "posts/addBookmark",
+    async ({ token, postID }, { rejectWithValue }) => {
+        try {
+            const response = await addBookmarkService(token, postID);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const removeBookmark = createAsyncThunk(
+    "posts/removeBookmark",
+    async ({ token, postID }, { rejectWithValue }) => {
+        try {
+            const response = await removeBookmarkService(token, postID);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+
+
 export const postSlice = createSlice({
     name: 'posts',
     initialState,
@@ -51,6 +91,15 @@ export const postSlice = createSlice({
         },
         [deletePost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
+        },
+        [getAllBookmarks.fulfilled]: (state, action) => {
+            state.bookmarkedPosts = action.payload
+        },
+        [addBookmark.fulfilled]: (state, action) => {
+            state.bookmarkedPosts = action.payload.bookmarks
+        },
+        [removeBookmark.fulfilled]: (state, action) => {
+            state.bookmarkedPosts = action.payload.bookmarks
         }
     }
 })
