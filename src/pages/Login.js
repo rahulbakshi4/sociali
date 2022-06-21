@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { login } from "../features/auth/authSlice"
 import { HeroImgContainer } from "../components"
 import { useNavigate } from "react-router-dom"
@@ -14,9 +14,15 @@ export const Login = () => {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(login(formData))
-        toast.success('Logged In Successfully!', { duration: 1500, position: 'bottom-center' });
-        navigate('/feed')
     }
+
+    useEffect(() => {
+        if (token) {
+            navigate('/feed')
+            toast.success('Logged In Successfully!', { duration: 1500, position: 'bottom-center' });
+        }
+    }, [token]);
+
     const onChangeHandler = (e) => {
         setFormData((prev) => ({
             ...prev, [e.target.name]: e.target.value

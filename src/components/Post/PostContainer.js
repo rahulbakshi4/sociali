@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import toast from "react-hot-toast"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { addBookmark, deletePost, getAllBookmarks, removeBookmark } from "../../features/posts/postSlice"
@@ -36,8 +36,14 @@ export const PostContainer = (post) => {
                 <ul className="px-4 py-1 flex gap-3 list-none">
                     <li className="py-1 px-2 flex items-center  rounded-full  gap-2 hover:bg-light hover:font-medium"> <HeartIcon size={18} />{post.likes.likeCount}</li>
                     <li className="py-1 px-2 flex items-center rounded-full gap-2 hover:bg-light hover:font-medium"><CommentIcon size={18} />{post?.comments.length}</li>
-                    {!bookmarked && <li onClick={() => dispatch(addBookmark({ token, postID: post._id }))} className="p-2 rounded-full hover:bg-light"><BookmarkIcon size={18} /></li>}
-                    {bookmarked && <li onClick={() => dispatch(removeBookmark({ token, postID: post._id }))} className="p-2 rounded-full hover:bg-light"><BookmarkIcon size={18} fill={"black"} /></li>}
+                    {!bookmarked && <li onClick={() => {
+                        dispatch(addBookmark({ token, postID: post._id }))
+                        toast.success(`Added to bookmarks`)
+                    }} className="p-2 rounded-full hover:bg-light"><BookmarkIcon size={18} /></li>}
+                    {bookmarked && <li onClick={() => {
+                        dispatch(removeBookmark({ token, postID: post._id }))
+                        toast.success(`Removed from bookmarks`)
+                    }} className="p-2 rounded-full hover:bg-light"><BookmarkIcon size={18} fill={"black"} /></li>}
                     {user.username === post.username && <li className="p-2 rounded-full ml-auto hover:bg-light" onClick={() => setDropdown("block")}><OptionsIcon size={18} /></li>}
                 </ul>
                 <ul className={`z-10 right-4 -bottom-16 border-2 bg-white border-gray-800 absolute rounded-md w-32 pl-0 list-none ${dropdown}`}>
