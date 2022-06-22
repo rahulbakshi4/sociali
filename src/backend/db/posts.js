@@ -117,7 +117,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: '9owJJb',
+    _id: 'eYN1jV',
     userID: 'C9NXXrK',
     content:
       "ah man they decided to shutdown Atom. I kinda liked atom.",
@@ -154,7 +154,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: '9owJJb',
+    _id: '6Fv7dT',
     userID: '9UW3Oba',
     content:
       "Just got my hands on Tiago Forte's new book 'Building A Second Brain', can't wait to read it over the weekend. ",

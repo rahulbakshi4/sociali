@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getAllUsers } from "../features/users/usersSlice"
-import { Navbar, PostContainer } from "../components"
+import { follow, getAllUsers } from "../features/users/usersSlice"
+import { Navbar, PostContainer, UserSuggestion } from "../components"
 import { useNavigate } from "react-router-dom"
 import { getAllPosts, newPost } from "../features/posts/postSlice"
+import { isFollowing } from "../utilities/isFollowing"
 
 export const Explore = () => {
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ export const Explore = () => {
     const { allUsers } = useSelector((store) => store.users)
     const { allPosts } = useSelector((store) => store.posts)
     const postsForExplore = allPosts?.filter((postData) => postData.username !== user?.username)
-    const suggestedUsers = allUsers?.filter((currUser) => currUser._id !== user?._id)
+    const suggestedUsers = allUsers?.filter((currUser) => (currUser._id !== user?._id) && !isFollowing(currUser?.followers, user?.username))
     useEffect(() => {
         dispatch(getAllUsers());
         dispatch(getAllPosts())
@@ -31,18 +32,8 @@ export const Explore = () => {
                     <p className="p-2 border-b-2 border-b-gray-800">Suggestion for you</p>
                     <ul className="pt-2 list-none">
 
-                        {suggestedUsers?.map(({ _id, username, name, avatarUrl }) => (<li key={_id}
-                            className="border-b-2 last:border-none border-b-gray-800 flex items-center gap-5 py-2 px-4 w-72 cursor-pointer ">
-                            <img onClick={() => navigate(`/profile/${username}`, { replace: true, state: { _id } })} src={avatarUrl} className="rounded-full w-10 h-10 object-cover" alt="user avatar" />
-                            <div className="list-content">
-                                <p className="text-sm font-semibold">{name}</p>
-                                <p className="text-sm">@{username}</p>
-                            </div>
-                            <button className="btn btn-dark ml-auto">
-                                Follow
-
-                            </button>
-                        </li>))}
+                        {suggestedUsers.length !== 0 ? suggestedUsers?.map((user) => (<UserSuggestion key={user._id} suggestedUser={user} />)) :
+                            <p className="p-2 text-gray-600 border-b-2 border-b-gray-800">No user suggestions</p>}
 
                     </ul>
                 </div>

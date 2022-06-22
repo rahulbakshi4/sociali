@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllUsersService, getUserPostService, getUserService } from "../../services/userServices";
+import { followUserService, getAllUsersService, getUserPostService, getUserService, unFollowUserService } from "../../services/userServices";
 
 const initialState = {
     userProfile: null,
     allUsers: [],
-    userPosts: []
+    userPosts: [],
 };
 
 export const getUser = createAsyncThunk(
@@ -40,6 +40,33 @@ export const getUserPost = createAsyncThunk('users/getUserPost',
             return ThunkAPI.rejectWithValue(error.response.data)
         }
     })
+
+
+export const follow = createAsyncThunk('users/follow',
+    async ({ userID, token }, ThunkAPI) => {
+        try {
+            const response = await followUserService(userID, token);
+            return response.data
+        }
+        catch (error) {
+            return ThunkAPI.rejectWithValue(error.response.data)
+        }
+    })
+
+export const unfollow = createAsyncThunk('users/unfollow',
+    async ({ userID, token }, ThunkAPI) => {
+        try {
+            const response = await unFollowUserService(userID, token);
+            return response.data
+        }
+        catch (error) {
+            return ThunkAPI.rejectWithValue(error.response.data)
+        }
+    })
+
+
+
+
 export const usersSlice = createSlice({
     name: "users",
     initialState,
@@ -57,7 +84,26 @@ export const usersSlice = createSlice({
         },
         [getUserPost.fulfilled]: (state, action) => {
             state.userPosts = action.payload.posts
-        }
+        },
+        [follow.fulfilled]: (state, action) => {
+            state.allUsers = state.allUsers.map((currUser) =>
+                currUser.username === action.payload.user.username ? action.payload.user : currUser
+            );
+            state.allUsers = state.allUsers.map((currUser) =>
+                currUser.username === action.payload.followUser.username ? action.payload.followUser : currUser
+            );
+            state.userProfile = action.payload.followUser
+        },
+        [unfollow.fulfilled]: (state, action) => {
+            state.allUsers = state.allUsers.map((currUser) =>
+                currUser.username === action.payload.user.username ? action.payload.user : currUser
+            );
+            state.allUsers = state.allUsers.map((currUser) =>
+                currUser.username === action.payload.followUser.username ? action.payload.followUser : currUser
+            );
+            state.userProfile = action.payload.followUser
+        },
+
     }
 })
 export const usersReducer = usersSlice.reducer
