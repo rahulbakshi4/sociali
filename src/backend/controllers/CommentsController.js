@@ -55,6 +55,7 @@ export const addPostCommentHandler = function (schema, request) {
             username: user.username,
             name: user.name,
             avatarUrl: user.avatarUrl,
+            userID: user._id,
             votes: { upvotedBy: [], downvotedBy: [] },
             createdAt: formatDate(),
             updatedAt: formatDate(),

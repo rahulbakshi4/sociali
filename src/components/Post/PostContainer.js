@@ -24,7 +24,7 @@ export const PostContainer = (post) => {
     }, [dispatch, token])
     return (
         <div>
-            <div className={`relative bg-white border-gray-800  
+            <div className={`relative bg-white border-gray-800 border-t-2
          ${(location?.pathname === `/feed` || location?.pathname === `/explore`) && 'feed-post'}
           ${location?.pathname === `/profile/${post.username}` && 'profile-post'}
             ${location?.pathname === `/post/${post._id}` && 'individual-post'} `}>

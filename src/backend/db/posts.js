@@ -25,21 +25,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        name: "Shubham Soni",
-        text: "Interesting",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        name: "Soham Shah",
-        text: "Wow!",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
+        name: "Kyal Cameron",
+        username: "cameronkyal",
+        userID: 'IZY5ebh',
+        text: "Haha that's a good one",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801977/kyle.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -65,21 +55,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        name: "Shubham Soni",
-        text: "Interesting",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        name: "Soham Shah",
-        text: "Wow!",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
+        name: "Aubree Ayala",
+        username: "aubree04",
+        userID: '9UW3Oba',
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801438/aubree.png",
+        text: "Parkour!!! 🏃‍♂️",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -104,21 +84,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        name: "Shubham Soni",
-        text: "Interesting",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        name: "Soham Shah",
-        text: "Wow!",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
+        username: "jbay",
+        userID: 'zQDggFs',
+        name: "James Bay",
+        text: "I need to get some coffee",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/peep_rssuj0.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -145,21 +115,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        name: "Shubham Soni",
-        text: "Interesting",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        name: "Soham Shah",
-        text: "Wow!",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
+        username: "lilly_morales",
+        name: "Lilly Mai Morales",
+        text: "Yaa man, I started out with atom",
+        userID: "T7-yOVS",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/lily.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -186,21 +146,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        name: "Shubham Soni",
-        text: "Interesting",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        name: "Soham Shah",
-        text: "Wow!",
-        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
+        username: "eliott_roman",
+        name: "Eliott Roman",
+        text: "I'm gonna read it",
+        userID: "C9NXXrK",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/elliot.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

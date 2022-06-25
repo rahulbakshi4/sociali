@@ -19,7 +19,7 @@ export const CommentContainer = (comment) => {
         <>
             <div className="relative flex items-start w-full h-max resize-none p-4 focus:outline-none 
                      border-b-gray-800">
-                <img onClick={() => navigate(`/profile/${comment.username}`, { replace: true, state: { _id: comment?._id } })} src={comment.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
+                <img onClick={() => navigate(`/profile/${comment.username}`, { replace: true, state: { _id: comment.userID } })} src={comment.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
                 <div className="flex-grow px-6">
                     <p className="text-md font-semibold">{comment.name} <span className="font-normal text-gray-600">@{comment.username}</span></p>
                     <p>{comment.text}</p>
@@ -37,7 +37,7 @@ export const CommentContainer = (comment) => {
                         dispatch(editComment({ postID: post._id, commentID: comment._id, commentData: comment, token }))
                         dispatch(setCommentData({ commentData: comment }))
                         setDropdown("hidden")
-                    }} className="py-1 flex px-2 items-center gap-4 border-b-2 border-gray-800 hover:bg-light hover:font-medium">
+                    }} className="py-1 flex px-2 cursor-pointer items-center gap-4 border-b-2 border-gray-800 hover:bg-light hover:font-medium">
                         <EditIcon size={18} />
                         <span>Edit</span>
                     </li>}
