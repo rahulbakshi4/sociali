@@ -26,7 +26,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "shubhamsoni",
+        name: "Shubham Soni",
         text: "Interesting",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -35,7 +37,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "sohamshah",
+        name: "Soham Shah",
         text: "Wow!",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -62,7 +66,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "shubhamsoni",
+        name: "Shubham Soni",
         text: "Interesting",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -71,7 +77,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "sohamshah",
+        name: "Soham Shah",
         text: "Wow!",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -97,7 +105,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "shubhamsoni",
+        name: "Shubham Soni",
         text: "Interesting",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -106,7 +116,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "sohamshah",
+        name: "Soham Shah",
         text: "Wow!",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -134,7 +146,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "shubhamsoni",
+        name: "Shubham Soni",
         text: "Interesting",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -143,7 +157,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "sohamshah",
+        name: "Soham Shah",
         text: "Wow!",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -171,7 +187,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "shubhamsoni",
+        name: "Shubham Soni",
         text: "Interesting",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -180,7 +198,9 @@ export const posts = [
       {
         _id: uuid(),
         username: "sohamshah",
+        name: "Soham Shah",
         text: "Wow!",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/user_default.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

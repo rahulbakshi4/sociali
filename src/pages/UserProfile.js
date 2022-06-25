@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useParams, useNavigate } from "react-router-dom"
-import { BookmarkIcon, ProfileDetailsModal, ListIcon, LogoutIcon, Modal, Navbar, PostContainer } from "../components"
+import { BookmarkIcon, ProfileDetailsModal, ListIcon, LogoutIcon, Modal, Navbar, PostContainer, EditProfileModal } from "../components"
 import { logout } from "../features/auth/authSlice"
 import { getAllBookmarks } from "../features/posts/postSlice"
 import { getUser, getUserPost, follow, unfollow } from "../features/users/usersSlice"
@@ -57,7 +57,11 @@ export const UserProfile = () => {
                             <div className="flex justify-between gap-4">
                                 <h2 className="text-3xl font-light">{userProfile?.username}</h2>
                                 {userID === user?._id ? (<div className="flex gap-6 items-center">
-                                    <button className="btn ">Edit Profile</button>
+                                    <button onClick={() => {
+                                        dispatch(openModal())
+                                        setChildren(<EditProfileModal />)
+
+                                    }} className="btn ">Edit Profile</button>
                                     <span onClick={() => logoutHandler()} className="cursor-pointer hover:bg-light p-2 rounded-full"><LogoutIcon /></span></div>)
                                     : !isFollowing(userProfile?.followers, user?.username) ?
                                         (<button onClick={() => followHandler()} className="btn btn-dark ">Follow</button>)

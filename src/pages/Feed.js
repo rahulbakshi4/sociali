@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllUsers } from "../features/users/usersSlice"
-import { Navbar, PostContainer, UserSuggestion } from "../components"
+import { Modal, Navbar, PostContainer, PostModal, UserSuggestion } from "../components"
 import { useNavigate } from "react-router-dom"
 import { getAllPosts, newPost } from "../features/posts/postSlice"
 import { isFollowing } from "../utilities/isFollowing"
@@ -14,6 +14,7 @@ export const Feed = () => {
     const { allUsers } = useSelector((store) => store.users)
     const loggedInUser = allUsers.find((userData) => userData?.username === user?.username)
     const { allPosts } = useSelector((store) => store.posts)
+    const { modalState } = useSelector((store) => store.utilities)
     const postsForFeed = allPosts?.filter((postData) => (postData?.username === user?.username) || isFollowing(loggedInUser?.following, postData.username))
     const suggestedUsers = allUsers?.filter((currUser) => (currUser._id !== user?._id) && !isFollowing(currUser?.followers, user?.username))
     useEffect(() => {
@@ -52,6 +53,7 @@ export const Feed = () => {
                     </ul>
                 </div>
             </div>
+            <Modal state={modalState} children={<PostModal />} />
         </>
 
 
