@@ -21,3 +21,11 @@ export const unFollowUserService = async (userID, token) => {
         {},
         { headers: { authorization: token } });
 };
+
+export const editProfileService = async (token, userData) => {
+    return await axios.post(
+        "/api/users/edit",
+        { userData },
+        { headers: { authorization: token } }
+    );
+}

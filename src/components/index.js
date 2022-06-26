@@ -11,3 +11,6 @@ export { UserSuggestion } from "./Suggestions/UserSuggestion"
 export { Modal } from "./Modal/Modal"
 export { ProfileDetailsModal } from "./Modal/ProfileDetailsModal"
 export { PrivateRoute } from "./PrivateRoute/PrivateRoute"
+export { CommentContainer } from "./Post/CommentContainer"
+export { PostModal } from './Modal/PostModal'
+export { EditProfileModal } from './Modal/EditProfileModal'

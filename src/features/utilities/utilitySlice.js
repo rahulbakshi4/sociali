@@ -2,6 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     modalState: null,
+    postData: null,
+    openPostModal: false,
+    commentData: null,
+
 }
 export const utilitySlice = createSlice({
     name: "utilities",
@@ -12,9 +16,21 @@ export const utilitySlice = createSlice({
         },
         closeModal: (state, action) => {
             state.modalState = null
+        },
+        setPostData: (state, action) => {
+            state.postData = action.payload.postData
+        },
+        setPostModalState: (state, action) => {
+            state.openPostModal = action.payload
+        },
+        setCommentData: (state, action) => {
+            state.commentData = action.payload.commentData
+        },
+        clearPostData: (state, action) => {
+            state.postData = null
         }
     }
 })
 
-export const { openModal, closeModal } = utilitySlice.actions
+export const { openModal, closeModal, setPostData, clearPostData, setCommentData, setPostModalState } = utilitySlice.actions
 export const utilityReducer = utilitySlice.reducer

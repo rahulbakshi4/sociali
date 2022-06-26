@@ -25,17 +25,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        name: "Kyal Cameron",
+        username: "cameronkyal",
+        userID: 'IZY5ebh',
+        text: "Haha that's a good one",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801977/kyle.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -61,17 +55,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        name: "Aubree Ayala",
+        username: "aubree04",
+        userID: '9UW3Oba',
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801438/aubree.png",
+        text: "Parkour!!! 🏃‍♂️",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -96,17 +84,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        username: "jbay",
+        userID: 'zQDggFs',
+        name: "James Bay",
+        text: "I need to get some coffee",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/peep_rssuj0.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -133,17 +115,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        username: "lilly_morales",
+        name: "Lilly Mai Morales",
+        text: "Yaa man, I started out with atom",
+        userID: "T7-yOVS",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/lily.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -170,17 +146,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        username: "eliott_roman",
+        name: "Eliott Roman",
+        text: "I'm gonna read it",
+        userID: "C9NXXrK",
+        avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654856968/elliot.png",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

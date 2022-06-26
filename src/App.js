@@ -1,4 +1,4 @@
-import { Explore, Feed, Login, SignUp, UserProfile } from "./pages";
+import { Explore, Feed, Login, Post, SignUp, UserProfile } from "./pages";
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Mockman from "mockman-js";
@@ -20,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile/:username" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
         <Route path='/explore' element={<PrivateRoute><Explore /></PrivateRoute>} />
+        <Route path="/post/:postID" element={<PrivateRoute><Post /></PrivateRoute>} />
       </Routes>
       <Toaster />
     </Router>
