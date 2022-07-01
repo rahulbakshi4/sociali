@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { deleteComment, editComment } from '../../features/posts/postSlice'
@@ -14,6 +15,7 @@ export const CommentContainer = (comment) => {
 
     const handleDelete = () => {
         dispatch(deleteComment({ postID: post._id, commentID: comment._id, token }))
+        toast.success(`Comment deleted!`, { duration: 1500 })
     }
     return (
         <>

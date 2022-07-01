@@ -14,3 +14,4 @@ export { PrivateRoute } from "./PrivateRoute/PrivateRoute"
 export { CommentContainer } from "./Post/CommentContainer"
 export { PostModal } from './Modal/PostModal'
 export { EditProfileModal } from './Modal/EditProfileModal'
+export { Loader } from './Loader/Loader'

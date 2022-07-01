@@ -95,3 +95,18 @@ export const LogoutIcon = ({ size }) => {
             <polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
     )
 }
+export const TrendingIcon = ({ size }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={size !== undefined ? size : 24} height={size !== undefined ? size : 24} viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+        </svg>
+    )
+}
+export const LatestIcon = ({ size }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={size !== undefined ? size : 24} height={size !== undefined ? size : 24} viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>)
+}

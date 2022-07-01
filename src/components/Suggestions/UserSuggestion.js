@@ -5,7 +5,7 @@ import toast from "react-hot-toast"
 export const UserSuggestion = ({ suggestedUser }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { user, token } = useSelector((store) => store.auth)
+  const { token } = useSelector((store) => store.auth)
 
   return (
     <li className="border-b-2 last:border-none border-b-gray-800 flex items-center gap-5 py-2 px-4 w-72 cursor-pointer ">

@@ -16,7 +16,7 @@ export const EditCommentModal = () => {
         setCommentEdited({ ...commentData })
     }, [commentData])
     return (
-        <div className="lg:block md:block hidden bg-white border-2 mx-auto lg:mt-40 md:mt-20 max-w-2xl border-gray-800 rounded-lg">
+        <div className="bg-white border-2 mx-auto lg:mt-40 md:mt-20 max-w-2xl border-gray-800 rounded-lg">
             <div className='px-2 flex justify-between border-b-2 border-b-gray-800 items-center'>
                 <p className="p-2 ">Edit Comment</p>
                 <span onClick={() => dispatch(closeModal())} className='p-1 hover:bg-light cursor-pointer rounded-full'><CloseIcon size={18} /></span>
@@ -32,6 +32,7 @@ export const EditCommentModal = () => {
                             { postID: post?._id, commentID: commentEdited._id, commentData: commentEdited, token }))
                         dispatch(closeModal())
                         setCommentEdited(null)
+                        toast.success("Comment edited successfully")
                     }}
                         className="btn btn-dark px-10 ">Save</button>
                 </div>

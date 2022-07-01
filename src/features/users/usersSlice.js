@@ -5,6 +5,7 @@ const initialState = {
     userProfile: null,
     allUsers: [],
     userPosts: [],
+    usersLoading: false,
 };
 
 export const getUser = createAsyncThunk(
@@ -87,8 +88,12 @@ export const usersSlice = createSlice({
         [getUser.fulfilled]: (state, action) => {
             state.userProfile = action.payload.user
         },
+        [getAllUsers.pending]: (state, action) => {
+            state.usersLoading = true;
+        },
         [getAllUsers.fulfilled]: (state, action) => {
             state.allUsers = action.payload.users
+            state.usersLoading = false;
         },
         [getUserPost.fulfilled]: (state, action) => {
             state.userPosts = action.payload.posts

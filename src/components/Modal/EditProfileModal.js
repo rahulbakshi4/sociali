@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { editProfile } from "../../features/users/usersSlice";
 import { closeModal } from "../../features/utilities/utilitySlice";
@@ -14,7 +15,7 @@ export const EditProfileModal = () => {
         setUserData({ ...userProfile })
     }, [])
     return (
-        <div className="lg:block md:block hidden bg-white border-2 mx-auto lg:mt-40 md:mt-20 max-w-md border-gray-800 rounded-lg">
+        <div className="bg-white border-2 mx-auto lg:mt-40 md:mt-20 max-w-md border-gray-800 rounded-lg">
             <div className='px-2 flex justify-between border-b-2 border-b-gray-800 items-center'>
                 <p className="p-2 ">Edit Profile</p>
                 <span onClick={() => dispatch(closeModal())} className='p-1 hover:bg-light cursor-pointer rounded-full'><CloseIcon size={18} /></span>
@@ -52,6 +53,7 @@ export const EditProfileModal = () => {
                 <button onClick={() => {
                     dispatch(editProfile({ token, userData }))
                     dispatch(closeModal())
+                    toast.success('Profile Updated Successfully')
                 }} className="btn btn-dark px-10 flex ml-auto">Save</button>
             </div>
         </div>

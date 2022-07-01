@@ -20,7 +20,7 @@ export const posts = [
     name: "James Bay",
     username: "jbay",
     avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
-    createdAt: formatDate(),
+    createdAt: new Date('Tue Jun 13 2022 01:00:00 GMT+0530'),
     updatedAt: formatDate(),
     comments: [
       {
@@ -43,14 +43,34 @@ export const posts = [
     content:
       `"It's never too early for ice cream." - Michael Scott`,
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 3,
+      likedBy: [
+        {
+          _id: 'zQDggFs',
+          username: 'jbay',
+          name: 'James Bay',
+          avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
+        },
+        {
+          _id: 'IZY5ebh',
+          username: 'cameronkyal',
+          name: 'Kyal Cameron',
+          avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801977/kyle.png",
+        },
+        {
+          _id: 'T7-yOVS',
+          name: "Lilly Mai Morales",
+          username: "lilly_morales",
+          avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801818/lily.png",
+
+        }
+      ],
       dislikedBy: [],
     },
     name: "Kyal Cameron",
     username: "cameronkyal",
     avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654801977/kyle.png",
-    createdAt: formatDate(),
+    createdAt: new Date('Mon Jun 13 2022 01:00:00 GMT+0530'),
     updatedAt: formatDate(),
     comments: [
       {
@@ -73,8 +93,22 @@ export const posts = [
     content:
       "People say money can't buy happiness. They Lie. Money buys Coffee, Coffee makes Me Happy!",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: 'zQDggFs',
+          username: 'jbay',
+          name: 'James Bay',
+          avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
+        },
+        {
+          _id: 'C9NXXrK',
+          name: "Eliott Roman",
+          username: "eliott_roman",
+          avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1654802197/elliot.png",
+
+        }
+      ],
       dislikedBy: [],
     },
     name: "Lilly Mai Morales",
@@ -95,7 +129,7 @@ export const posts = [
         },
       },
     ],
-    createdAt: formatDate(),
+    createdAt: new Date('Thu Jun 16 2022 10:09:11 GMT+0530'),
     updatedAt: formatDate(),
   },
   {
@@ -126,7 +160,7 @@ export const posts = [
         },
       },
     ],
-    createdAt: formatDate(),
+    createdAt: new Date('Sun Jun 19 2022 06:09:11 GMT+0530'),
     updatedAt: formatDate(),
   },
   {
@@ -135,8 +169,15 @@ export const posts = [
     content:
       "Just got my hands on Tiago Forte's new book 'Building A Second Brain', can't wait to read it over the weekend. ",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: 'zQDggFs',
+          username: 'jbay',
+          name: 'James Bay',
+          avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
+        }
+      ],
       dislikedBy: [],
     },
     name: "Aubree Ayala",
@@ -157,7 +198,7 @@ export const posts = [
         },
       },
     ],
-    createdAt: formatDate(),
+    createdAt: new Date('Tue Jun 21 2022 11:11:11 GMT+0530'),
     updatedAt: formatDate(),
   },
 ];
