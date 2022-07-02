@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useParams, useNavigate } from "react-router-dom"
-import { BookmarkIcon, ProfileDetailsModal, ListIcon, LogoutIcon, Modal, Navbar, PostContainer, EditProfileModal } from "../components"
+import { BookmarkIcon, ProfileDetailsModal, ListIcon, LogoutIcon, Modal, Navbar, PostContainer, EditProfileModal, Loader, PostModal } from "../components"
 import { logout } from "../features/auth/authSlice"
 import { getAllBookmarks } from "../features/posts/postSlice"
 import { getUser, getUserPost, follow, unfollow } from "../features/users/usersSlice"
@@ -11,7 +11,7 @@ import { isFollowing } from "../utilities/isFollowing"
 export const UserProfile = () => {
     const { user, token } = useSelector((store) => store.auth)
     const { userProfile, userPosts } = useSelector((store) => store.users)
-    const { modalState } = useSelector((store) => store.utilities)
+    const { modalState, openPostModal } = useSelector((store) => store.utilities)
     const location = useLocation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -24,10 +24,16 @@ export const UserProfile = () => {
     const [children, setChildren] = useState(null)
     useEffect(() => {
         dispatch(getUser(userID))
-        dispatch(getUserPost(username))
-        dispatch(getAllBookmarks())
+    }, [userID, userProfile?.bookmarks])
 
-    }, [dispatch, username, userProfile?.bookmarks])
+    useEffect(() => {
+        dispatch(getAllBookmarks())
+    }, [userProfile?.bookmarks])
+
+    useEffect(() => {
+        dispatch(getUserPost(username))
+    }, [userProfile])
+
     const followHandler = () => {
         dispatch(follow({ token, userID: userProfile?._id }))
         toast.success(`You are now following @${userProfile?.username} `)
@@ -42,7 +48,6 @@ export const UserProfile = () => {
         toast.success(`Logged out successfully`, { position: 'bottom-center' })
         navigate('/')
     }
-
     return (
         <>
             <Navbar />
@@ -102,7 +107,7 @@ export const UserProfile = () => {
                         {active.posts && (userPosts?.length !== 0 ? (userPosts.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No posts found</p>))}
                         {active.bookmarks && (userProfile?.bookmarks.length !== 0 ? (userProfile?.bookmarks.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No bookmarks found</p>))}
                     </div>
-                    <Modal state={modalState} children={children} />
+                    <Modal state={modalState} children={openPostModal ? <PostModal /> : children} />
                 </div>
             </div>
         </>

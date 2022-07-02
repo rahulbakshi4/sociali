@@ -6,7 +6,8 @@ const initialState = {
     userPosts: [],
     allPosts: [],
     bookmarkedPosts: [],
-    post: {}
+    post: {},
+    postLoading: false,
 }
 
 export const getAllPosts = createAsyncThunk(
@@ -103,7 +104,6 @@ export const likePost = createAsyncThunk(
     async ({ token, postID }, { rejectWithValue }) => {
         try {
             const response = await likePostService(token, postID);
-            console.log(response.data.posts)
             return response.data.posts;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -165,9 +165,14 @@ export const postSlice = createSlice({
         [newPost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
         },
+        [getAllPosts.pending]: (state, action) => {
+            state.postLoading = true
+        },
         [getAllPosts.fulfilled]: (state, action) => {
+            state.postLoading = false;
             state.allPosts = action.payload
         },
+
         [deletePost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
         },

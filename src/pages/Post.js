@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
+import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { CommentContainer, Modal, Navbar, PostContainer, PostModal, } from "../components"
 import { EditCommentModal } from "../components/Modal/EditCommentModal"
 import { addComment, getPostById } from "../features/posts/postSlice"
 export const Post = () => {
     const { postID } = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [userComment, setUserComment] = useState("")
     const { token } = useSelector((store) => store.auth)
     const { post } = useSelector((store) => store.posts)
@@ -14,6 +16,8 @@ export const Post = () => {
     useEffect(() => {
         dispatch(getPostById({ postID }))
     }, [postID, post])
+
+
     return (
         <>
             <Navbar />
@@ -36,6 +40,7 @@ export const Post = () => {
                                         token
                                     }))
                                 setUserComment("")
+                                toast.success("Comment added successfully")
                             }} className="bg-black text-white px-10 disabled:btn-disabled" disabled={userComment === ""}>Post</button>
                         </div>
                     </div>

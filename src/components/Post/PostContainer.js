@@ -17,6 +17,10 @@ export const PostContainer = (post) => {
     const deleteHandler = () => {
         dispatch(deletePost({ token, postID: post._id }))
         dispatch(removeBookmark({ token, postID: post._id }))
+        if (location.pathname === `/post/${post._id}`) {
+            navigate('/feed')
+        }
+        toast.success(`Post deleted!`, { duration: 1500 })
     }
     useEffect(() => {
         dispatch(getAllBookmarks({ token }))
@@ -33,7 +37,7 @@ export const PostContainer = (post) => {
                     <img onClick={() => navigate(`/profile/${post.username}`, { replace: true, state: { _id: post?.userID } })} src={post.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
                     <div className="flex-grow px-6">
                         <p className="text-md font-semibold">{post.name} <span className="font-normal text-gray-600">@{post.username}</span></p>
-                        <p onClick={() => navigate(`/post/${post._id}`)}>{post.content}</p>
+                        <p className="cursor-pointer" onClick={() => navigate(`/post/${post._id}`)}>{post.content}</p>
                     </div>
                 </div>
                 <ul className="px-4 py-1 flex gap-3 list-none">

@@ -9,7 +9,7 @@ export const ProfileDetailsModal = ({ data }) => {
     const navigate = useNavigate()
     const { user, token } = useSelector((store) => store.auth)
     return (
-        <div className="lg:block md:block hidden bg-white border-2 mx-auto lg:mt-40 md:mt-20 w-72 border-gray-800 rounded-lg">
+        <div className="bg-white border-2 mx-auto lg:mt-40 md:mt-20 w-72 border-gray-800 rounded-lg">
             <div className='px-2 flex justify-between border-b-2 border-b-gray-800 items-center'>
                 <p className="p-2 ">Following</p>
                 <span onClick={() => dispatch(closeModal())} className='p-1 hover:bg-light cursor-pointer rounded-full'><CloseIcon size={18} /></span>
