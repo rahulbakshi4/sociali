@@ -43,7 +43,7 @@ export const Feed = () => {
                         </div>
                     </div>
                     <div className="flex-grow lg:mt-16 md:mt-16 ">
-                        {postsForFeed.reverse().map((post) => (<PostContainer key={post.id} {...post} />))}
+                        {postsForFeed?.reverse().map((post) => (<PostContainer key={post.id} {...post} />))}
                     </div>
 
                 </div>
