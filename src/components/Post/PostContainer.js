@@ -22,6 +22,9 @@ export const PostContainer = (post) => {
         }
         toast.success(`Post deleted!`, { duration: 1500 })
     }
+    const viewProfile = () => {
+        navigate(`/profile/${post.username}`, { replace: true, state: { _id: post.userID } })
+    }
     useEffect(() => {
         dispatch(getAllBookmarks({ token }))
         dispatch(getAllPosts())
@@ -34,9 +37,9 @@ export const PostContainer = (post) => {
             ${location?.pathname === `/post/${post._id}` && 'individual-post'} `}>
                 <div className="flex items-start w-full h-max resize-none p-4 focus:outline-none border-b-2
                      border-b-gray-800">
-                    <img onClick={() => navigate(`/profile/${post.username}`, { replace: true, state: { _id: post?.userID } })} src={post.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
+                    <img onClick={() => viewProfile()} src={post.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
                     <div className="flex-grow px-6">
-                        <p className="text-md font-semibold">{post.name} <span className="font-normal text-gray-600">@{post.username}</span></p>
+                        <p onClick={() => viewProfile()} className="text-md cursor-pointer font-semibold">{post.name} <span className="font-normal text-gray-600">@{post.username}</span></p>
                         <p className="cursor-pointer" onClick={() => navigate(`/post/${post._id}`)}>{post.content}</p>
                     </div>
                 </div>

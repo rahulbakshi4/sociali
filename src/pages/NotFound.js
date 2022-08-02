@@ -13,7 +13,7 @@ export const NotFound = () => {
 
                     <div className="border-2 bg-white border-gray-800 rounded-lg lg:w-1/2 p-8 shadow-3xl">
                         <h1 className="text-5xl">404</h1>
-                        <p className="py-4 text-xl">Nothing to see here just Uncle Tom and Mr.Crow chiiling together and they don't like to be disturbed. </p>
+                        <p className="py-4 text-xl">Nothing to see here just Uncle Tom and Mr.Crow chilling together and they don't like to be disturbed. </p>
                         <button className="btn" onClick={() => navigate('/')}>Back to Home</button>
                     </div>
                 </div>

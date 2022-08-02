@@ -25,11 +25,14 @@ export const UserProfile = () => {
         posts: true,
         bookmarks: false
     })
+    console.log(active)
     const [children, setChildren] = useState(null)
     useEffect(() => {
         dispatch(getAllPosts())
     }, [])
-
+    useEffect(() => {
+        setActive({ posts: true, bookmarks: false })
+    }, [userID])
     useEffect(() => {
         dispatch(getUser(userID))
     }, [userID, bookmarkedPosts])
@@ -91,7 +94,7 @@ export const UserProfile = () => {
                                 <p className="text-sm">{userProfile?.bio}</p>
                             </div>
                             <div>
-                                <a href={userProfile?.portfolio} className="hover:underline">{userProfile?.portfolio}</a>
+                                <a href={userProfile?.portfolio} target="_blank" rel="noopener noreferrer" className="hover:underline">{userProfile?.portfolio}</a>
                             </div>
                         </div>
                     </div>
@@ -108,7 +111,7 @@ export const UserProfile = () => {
                         </li>
                     </ul>)}
                     <div className="pt-1">
-                        {active.posts && (userPosts?.length !== 0 ? (userPosts.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No posts found</p>))}
+                        {active.posts && (userPosts?.length !== 0 ? (userPosts.reverse().map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No posts found</p>))}
                         {active.bookmarks && (bookmarks.length !== 0 ? (bookmarks.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No bookmarks found</p>))}
                     </div>
                     <Modal state={modalState} children={openPostModal ? <PostModal /> : children} />
