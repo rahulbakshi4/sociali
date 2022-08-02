@@ -13,7 +13,7 @@ export const users = [
     password: "13579",
     bio: "What's Poppin",
     avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
-    portfolio: "https://findtheinvisiblecow.com/",
+    portfolio: "https://puginarug.com/",
     followers: [],
     following: [],
     bookmarks: [],
