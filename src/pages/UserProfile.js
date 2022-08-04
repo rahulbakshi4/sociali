@@ -25,7 +25,6 @@ export const UserProfile = () => {
         posts: true,
         bookmarks: false
     })
-    console.log(active)
     const [children, setChildren] = useState(null)
     useEffect(() => {
         dispatch(getAllPosts())
