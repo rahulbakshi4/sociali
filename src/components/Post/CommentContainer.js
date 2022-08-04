@@ -17,13 +17,16 @@ export const CommentContainer = (comment) => {
         dispatch(deleteComment({ postID: post._id, commentID: comment._id, token }))
         toast.success(`Comment deleted!`, { duration: 1500 })
     }
+    const viewProfile = () => {
+        navigate(`/profile/${comment.username}`, { replace: true, state: { _id: comment.userID } })
+    }
     return (
         <>
             <div className="relative flex items-start w-full h-max resize-none p-4 focus:outline-none 
                      border-b-gray-800">
-                <img onClick={() => navigate(`/profile/${comment.username}`, { replace: true, state: { _id: comment.userID } })} src={comment.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
+                <img onClick={() => viewProfile()} src={comment.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
                 <div className="flex-grow px-6">
-                    <p className="text-md font-semibold">{comment.name} <span className="font-normal text-gray-600">@{comment.username}</span></p>
+                    <p onClick={() => viewProfile()} className="text-md cursor-pointer font-semibold">{comment.name} <span className="font-normal text-gray-600">@{comment.username}</span></p>
                     <p>{comment.text}</p>
                 </div>
                 {((post?.username === user?.username) || (comment.username === user?.username)) &&
