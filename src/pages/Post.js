@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { CommentContainer, Loader, Modal, Navbar, PostContainer, PostModal, } from "../components"
 import { EditCommentModal } from "../components/Modal/EditCommentModal"
-import { addComment, getPostById } from "../features/posts/postSlice"
+import { addComment, getAllPosts, getPostById } from "../features/posts/postSlice"
 export const Post = () => {
     const { postID } = useParams()
     const dispatch = useDispatch()
@@ -41,6 +41,7 @@ export const Post = () => {
                                         token
                                     }))
                                 setUserComment("")
+                                dispatch(getAllPosts())
                                 toast.success("Comment added successfully")
                             }} className="bg-black text-white px-10 disabled:btn-disabled" disabled={userComment === ""}>Post</button>
                         </div>

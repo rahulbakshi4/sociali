@@ -2,7 +2,7 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { deleteComment, editComment } from '../../features/posts/postSlice'
+import { deleteComment, editComment, getAllPosts } from '../../features/posts/postSlice'
 import { openModal, setCommentData, } from '../../features/utilities/utilitySlice'
 import { CloseIcon, EditIcon, OptionsIcon, TrashIcon } from '../SVG/svg'
 
@@ -15,6 +15,7 @@ export const CommentContainer = (comment) => {
 
     const handleDelete = () => {
         dispatch(deleteComment({ postID: post._id, commentID: comment._id, token }))
+        dispatch(getAllPosts())
         toast.success(`Comment deleted!`, { duration: 1500 })
     }
     const viewProfile = () => {
