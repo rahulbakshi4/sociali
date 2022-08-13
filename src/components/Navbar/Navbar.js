@@ -23,7 +23,7 @@ export const Navbar = () => {
                                 <ExploreIcon />
                             </NavLink>
 
-                            <img onClick={() => navigate(`/profile/${currUser?.username}`, { replace: true, state: { _id: user?._id } })}
+                            <img onClick={() => navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user?._id } })}
                                 className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
                         </li>
                     </ul>

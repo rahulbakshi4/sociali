@@ -6,6 +6,7 @@ const initialState = {
     allUsers: [],
     userPosts: [],
     usersLoading: false,
+    isUserLoading: false,
 };
 
 export const getUser = createAsyncThunk(
@@ -68,7 +69,6 @@ export const editProfile = createAsyncThunk('users/editUser',
     async ({ token, userData }, ThunkAPI) => {
         try {
             const response = await editProfileService(token, userData);
-            console.log(response)
             return response.data
         }
         catch (error) {
@@ -86,7 +86,11 @@ export const usersSlice = createSlice({
         },
     },
     extraReducers: {
+        [getUser.pending]: (state) => {
+            state.isUserLoading = true;
+        },
         [getUser.fulfilled]: (state, action) => {
+            state.isUserLoading = false;
             state.userProfile = action.payload.user
         },
         [getAllUsers.pending]: (state, action) => {

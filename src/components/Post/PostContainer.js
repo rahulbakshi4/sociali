@@ -27,10 +27,6 @@ export const PostContainer = (post) => {
     const viewProfile = () => {
         navigate(`/profile/${post.username}`, { replace: true, state: { _id: post.userID } })
     }
-    useEffect(() => {
-        dispatch(getAllBookmarks({ token }))
-        dispatch(getAllPosts())
-    }, [token])
     return (
         <div>
             <div className={`relative bg-white border-gray-800 border-t-2

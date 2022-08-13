@@ -10,7 +10,7 @@ import { openModal } from "../features/utilities/utilitySlice"
 import { isFollowing } from "../utilities/isFollowing"
 export const UserProfile = () => {
     const { user, token } = useSelector((store) => store.auth)
-    const { userProfile } = useSelector((store) => store.users)
+    const { userProfile, isUserLoading } = useSelector((store) => store.users)
     const { modalState, openPostModal } = useSelector((store) => store.utilities)
     const { allPosts, bookmarkedPosts } = useSelector((store) => store.posts)
     const userPosts = allPosts?.filter((post) => post.username === userProfile?.username)
@@ -34,11 +34,10 @@ export const UserProfile = () => {
     }, [userID])
     useEffect(() => {
         dispatch(getUser(userID))
-    }, [userID, bookmarkedPosts])
-
+    }, [userID])
     useEffect(() => {
-        dispatch(getAllBookmarks())
-    }, [userProfile?.bookmarks])
+        dispatch(getUser(userID))
+    }, [bookmarkedPosts])
 
     const followHandler = () => {
         dispatch(follow({ token, userID: userProfile?._id }))
@@ -54,11 +53,10 @@ export const UserProfile = () => {
         toast.success(`Logged out successfully`, { position: 'bottom-center' })
         navigate('/')
     }
-    console.log(userProfile)
     return (
         <>
             <Navbar />
-            <div className="">
+            {isUserLoading ? <div className="lg:mt-20 md:mt-20"><Loader /></div> : <div className="">
                 <div className="bg-white max-w-3xl lg:mt-20 md:mt-20 border-2 border-gray-800 mx-auto  rounded-lg">
                     <div className="flex p-4 flex-col sm:flex-row">
                         <div className="flex lg:px-6 md:px-6 px-4 lg:basis-5/12 justify-center">
@@ -116,7 +114,7 @@ export const UserProfile = () => {
                     </div>
                     <Modal state={modalState} children={openPostModal ? <PostModal /> : children} />
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

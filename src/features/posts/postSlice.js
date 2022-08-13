@@ -23,7 +23,6 @@ export const getAllPosts = createAsyncThunk(
 );
 
 export const newPost = createAsyncThunk('posts/newPost', async ({ token, post }, ThunkAPI) => {
-    console.log(post);
     try {
         const response = await newPostService(token, post);
         return response.data.posts;
@@ -166,11 +165,7 @@ export const postSlice = createSlice({
         [newPost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
         },
-        [getAllPosts.pending]: (state, action) => {
-            state.postLoading = true
-        },
         [getAllPosts.fulfilled]: (state, action) => {
-            state.postLoading = false;
             state.allPosts = action.payload
         },
 
@@ -180,8 +175,16 @@ export const postSlice = createSlice({
         [editPost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
         },
+        [getPostById.pending]: (state, action) => {
+            state.postLoading = true
+        },
         [getPostById.fulfilled]: (state, action) => {
+            state.postLoading = false
             state.post = action.payload
+        },
+        [getPostById.rejected]: (state, action) => {
+            state.postLoading = false
+            console.log(action.payload)
         },
         [getAllBookmarks.fulfilled]: (state, action) => {
             state.bookmarkedPosts = action.payload
