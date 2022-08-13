@@ -45,6 +45,7 @@ export const authSlice = createSlice({
             state.token = action.payload.encodedToken;
             toast.success('Logged In Successfully!', { duration: 1500, position: 'bottom-center' });
         },
+
     }
 })
 export const { logout } = authSlice.actions

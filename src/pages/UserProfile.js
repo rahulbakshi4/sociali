@@ -10,11 +10,11 @@ import { openModal } from "../features/utilities/utilitySlice"
 import { isFollowing } from "../utilities/isFollowing"
 export const UserProfile = () => {
     const { user, token } = useSelector((store) => store.auth)
-    const { userProfile, profileLoading } = useSelector((store) => store.users)
+    const { userProfile } = useSelector((store) => store.users)
     const { modalState, openPostModal } = useSelector((store) => store.utilities)
     const { allPosts, bookmarkedPosts } = useSelector((store) => store.posts)
     const userPosts = allPosts?.filter((post) => post.username === userProfile?.username)
-    const bookmarks = allPosts.filter((el) =>
+    const bookmarks = allPosts?.filter((el) =>
         userProfile?.bookmarks.some((bookmark) => bookmark._id === el._id))
     const location = useLocation()
     const navigate = useNavigate()
@@ -54,6 +54,7 @@ export const UserProfile = () => {
         toast.success(`Logged out successfully`, { position: 'bottom-center' })
         navigate('/')
     }
+    console.log(userProfile)
     return (
         <>
             <Navbar />
@@ -110,8 +111,8 @@ export const UserProfile = () => {
                         </li>
                     </ul>)}
                     <div className="pt-1">
-                        {active.posts && (userPosts?.length !== 0 ? (userPosts.reverse().map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No posts found</p>))}
-                        {active.bookmarks && (bookmarks.length !== 0 ? (bookmarks.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No bookmarks found</p>))}
+                        {active.posts && (userPosts?.length !== 0 ? (userPosts?.reverse().map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No posts found</p>))}
+                        {active.bookmarks && (bookmarks?.length !== 0 ? (bookmarks?.map((post) => <PostContainer key={post.id} {...post} />)) : (<p className="p-4 text-center text-xl">No bookmarks found</p>))}
                     </div>
                     <Modal state={modalState} children={openPostModal ? <PostModal /> : children} />
                 </div>

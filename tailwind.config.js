@@ -13,6 +13,7 @@ module.exports = {
         '3xl': '10px 12px 0px 4px #000000',
         'btn': '6px 8px 0px 2px #000000',
         'btn-sm': '4px 6px 0px 0px #000000',
+        'icon': '0 1px 4px 0 rgb(0 0 0 / 10%)'
       }
     },
   },

@@ -17,7 +17,8 @@ export const Explore = () => {
         latest: false,
         trending: false
     })
-    const postsForExplore = allPosts?.filter((postData) => postData.username !== user?.username)
+    const loggedInUser = allUsers.find((userData) => userData?.username === user?.username)
+    const postsForExplore = allPosts?.filter((postData) => (postData.username !== user?.username) && !isFollowing(loggedInUser?.following, postData.username))
     const [data, setData] = useState([])
     const latestPosts = getlatestPosts(postsForExplore)
     const trendingPosts = getTrendingPosts(postsForExplore)

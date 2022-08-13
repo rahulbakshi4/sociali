@@ -23,6 +23,7 @@ export const getAllPosts = createAsyncThunk(
 );
 
 export const newPost = createAsyncThunk('posts/newPost', async ({ token, post }, ThunkAPI) => {
+    console.log(post);
     try {
         const response = await newPostService(token, post);
         return response.data.posts;

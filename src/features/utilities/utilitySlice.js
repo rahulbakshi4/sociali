@@ -28,9 +28,9 @@ export const utilitySlice = createSlice({
         },
         clearPostData: (state, action) => {
             state.postData = null
-        }
+        },
     }
 })
 
-export const { openModal, closeModal, setPostData, clearPostData, setCommentData, setPostModalState } = utilitySlice.actions
+export const { openModal, closeModal, setPostData, clearPostData, setCommentData, setPostModalState, viewImg } = utilitySlice.actions
 export const utilityReducer = utilitySlice.reducer

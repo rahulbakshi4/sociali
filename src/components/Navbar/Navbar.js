@@ -6,6 +6,8 @@ export const Navbar = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector((store) => store.auth)
+    const { allUsers } = useSelector((store) => store.users)
+    const currUser = allUsers?.find((user) => user._id === user?._id)
     return (
         <div className="fixed z-10 h-max w-full lg:top-0 md:top-0 bottom-0 ">
             <div className="bg-gray-50 border-b-2 border-b-slate-800">
@@ -21,8 +23,8 @@ export const Navbar = () => {
                                 <ExploreIcon />
                             </NavLink>
 
-                            <img onClick={() => navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user?._id } })}
-                                className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={user?.avatarUrl} alt="user avatar" />
+                            <img onClick={() => navigate(`/profile/${currUser?.username}`, { replace: true, state: { _id: user?._id } })}
+                                className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
                         </li>
                     </ul>
                 </nav>

@@ -64,17 +64,18 @@ export const unfollow = createAsyncThunk('users/unfollow',
             return ThunkAPI.rejectWithValue(error.response.data)
         }
     })
-
 export const editProfile = createAsyncThunk('users/editUser',
     async ({ token, userData }, ThunkAPI) => {
         try {
             const response = await editProfileService(token, userData);
+            console.log(response)
             return response.data
         }
         catch (error) {
             return ThunkAPI.rejectWithValue(error.response.data)
         }
     });
+
 
 export const usersSlice = createSlice({
     name: "users",

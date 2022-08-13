@@ -16,8 +16,6 @@ export const Post = () => {
     useEffect(() => {
         dispatch(getPostById({ postID }))
     }, [postID, post])
-
-
     return (
         <>
             <Navbar />
