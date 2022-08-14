@@ -48,7 +48,7 @@ export const Feed = () => {
                         <textarea name="" id="" className="w-full h-[18vh] resize-none p-4 focus:outline-none " placeholder="Whats happening?" value={post.content} onChange={(e) =>
                             setPost({ ...post, content: e.target.value })}></textarea>
                         {post.image !== "" ? <div className="p-4 relative">
-                            <img className="w-2/3 h-auto mx-auto" src={post.image} alt="" />
+                            <img className="w-2/3 max-h-96 object-contain mx-auto" src={post.image} alt="" />
                             <div onClick={() => setPost({ ...post, image: "" })} className="absolute top-1 right-1 cursor-pointer flex justify-center p-2 mr-2 bg-white hover:bg-light shadow-sm rounded-full" >
                                 <CloseIcon size={16} />
                             </div>

@@ -38,7 +38,7 @@ export const Navbar = () => {
                     </NavLink>
 
                     <img onClick={() => { dispatch(getUser(user._id)); navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user._id } }) }}
-                        className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={user?.avatarUrl} alt="user avatar" />
+                        className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
                 </nav>
 
             </div>

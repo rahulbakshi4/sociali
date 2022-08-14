@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast';
 import { addBookmarkService, addCommentService, deleteCommentService, dislikePostService, editCommentService, editPostService, getAllBookmarkService, getPostByIdService, likePostService, removeBookmarkService } from "../../services/postServices";
 import { deletePostService, getAllPostService, newPostService } from '../../services/postServices'
 

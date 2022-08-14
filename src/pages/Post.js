@@ -26,7 +26,7 @@ export const Post = () => {
                 {post && Object.keys(post).length > 0 ? <div className="flex-grow lg:mt-20 md:mt-20 ">
                     {post && <PostContainer {...post} />}
 
-                    <div className="bg-white border-x-2 border-b-2 rounded-b-md pt-1 border-gray-800">
+                    <div className="bg-white border-x-2 border-b-2 rounded-b-md pt-1 mb-4 border-gray-800">
                         {post?.comments?.map((comment) => <CommentContainer key={comment._id} {...comment} />)}
 
                         <div className="flex align-baseline">

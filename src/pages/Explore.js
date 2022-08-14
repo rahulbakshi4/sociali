@@ -36,8 +36,9 @@ export const Explore = () => {
             <div className="flex gap-6 items-start max-w-4xl mx-auto ">
                 <div className="flex-grow lg:mt-20 md:mt-20 ">
                     {(activeTab.latest || activeTab.trending) ?
-                        data.map((post) => <PostContainer key={post._id} {...post} />) :
-                        postsForExplore.map((post) => (<PostContainer key={post.id} {...post} />))}
+                        data.length > 0 ? data.map((post) => <PostContainer key={post._id} {...post} />) : <h2 className="text-lg text-center font-medium">{`No post were found :)`}</h2> :
+                        (postsForExplore.length > 0) ? postsForExplore.map((post) => (<PostContainer key={post.id} {...post} />)) :
+                            <h2 className="text-lg text-center font-medium">{`No post were found :)`}</h2>}
                 </div>
                 <div className="lg:block md:block hidden lg:mt-20 md:mt-20">
                     <div className="flex mb-4 justify-center items-center gap-6 py-2 bg-white border-2 border-gray-800 rounded-lg">
