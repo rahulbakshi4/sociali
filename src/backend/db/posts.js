@@ -20,6 +20,7 @@ export const posts = [
     name: "James Bay",
     username: "jbay",
     avatarUrl: "https://res.cloudinary.com/rahulb4/image/upload/v1643855031/peep_rssuj0.png",
+    imageUpload: "",
     createdAt: new Date('Tue Jun 13 2022 01:00:00 GMT+0530'),
     updatedAt: formatDate(),
     comments: [

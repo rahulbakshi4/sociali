@@ -19,7 +19,6 @@ export const Login = () => {
     useEffect(() => {
         if (token) {
             navigate('/feed')
-            toast.success('Logged In Successfully!', { duration: 1500, position: 'bottom-center' });
         }
     }, [token]);
 

@@ -110,3 +110,12 @@ export const LatestIcon = ({ size }) => {
             <polyline points="12 6 12 12 16 14"></polyline>
         </svg>)
 }
+export const ImgUploadIcon = ({ size }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={size !== undefined ? size : 24} height={size !== undefined ? size : 24} viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+    )
+}

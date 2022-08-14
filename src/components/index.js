@@ -4,7 +4,7 @@ export {
     HomeIcon, ExploreIcon, BookmarkIcon,
     ListIcon, HeartIcon, CommentIcon,
     OptionsIcon, CloseIcon, EditIcon,
-    TrashIcon, LogoutIcon
+    TrashIcon, LogoutIcon, ImgUploadIcon
 } from "./SVG/svg"
 export { PostContainer } from "./Post/PostContainer"
 export { UserSuggestion } from "./Suggestions/UserSuggestion"

@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
-import { editComment, editPost } from "../../features/posts/postSlice"
+import { editComment, editPost, getAllPosts } from "../../features/posts/postSlice"
 import { clearPostData, closeModal } from "../../features/utilities/utilitySlice"
 import { CloseIcon } from "../SVG/svg"
 
@@ -32,6 +33,7 @@ export const EditCommentModal = () => {
                             { postID: post?._id, commentID: commentEdited._id, commentData: commentEdited, token }))
                         dispatch(closeModal())
                         setCommentEdited(null)
+                        dispatch(getAllPosts())
                         toast.success("Comment edited successfully")
                     }}
                         className="btn btn-dark px-10 disabled:btn-disabled" disabled={commentEdited?.text === ""}>Save</button>

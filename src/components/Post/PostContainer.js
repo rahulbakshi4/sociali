@@ -12,6 +12,8 @@ export const PostContainer = (post) => {
     const [dropdown, setDropdown] = useState("hidden")
     const { token, user } = useSelector((store) => store.auth)
     const { bookmarkedPosts } = useSelector((store) => store.posts)
+    const { allUsers } = useSelector((store) => store.users)
+    const currentUser = allUsers?.find((user) => user.username === user.username)
     const liked = post?.likes?.likedBy?.some((likeby) => likeby.username === user.username)
     const bookmarked = bookmarkedPosts?.some((postData) => postData._id === post._id)
     const deleteHandler = () => {
@@ -22,10 +24,9 @@ export const PostContainer = (post) => {
         }
         toast.success(`Post deleted!`, { duration: 1500 })
     }
-    useEffect(() => {
-        dispatch(getAllBookmarks({ token }))
-        dispatch(getAllPosts())
-    }, [dispatch, token])
+    const viewProfile = () => {
+        navigate(`/profile/${post.username}`, { replace: true, state: { _id: post.userID } })
+    }
     return (
         <div>
             <div className={`relative bg-white border-gray-800 border-t-2
@@ -34,10 +35,13 @@ export const PostContainer = (post) => {
             ${location?.pathname === `/post/${post._id}` && 'individual-post'} `}>
                 <div className="flex items-start w-full h-max resize-none p-4 focus:outline-none border-b-2
                      border-b-gray-800">
-                    <img onClick={() => navigate(`/profile/${post.username}`, { replace: true, state: { _id: post?.userID } })} src={post.avatarUrl} className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
+                    <img onClick={() => viewProfile()} src={
+                        post.username === currentUser?.username ? currentUser?.avatarUrl : post.avatarUrl
+                    } className="rounded-full w-10 h-10 object-cover cursor-pointer" alt="user avatar" />
                     <div className="flex-grow px-6">
-                        <p className="text-md font-semibold">{post.name} <span className="font-normal text-gray-600">@{post.username}</span></p>
-                        <p className="cursor-pointer" onClick={() => navigate(`/post/${post._id}`)}>{post.content}</p>
+                        <p onClick={() => viewProfile()} className="text-md cursor-pointer font-semibold">{post.name} <span className="font-normal text-gray-600">@{post.username}</span></p>
+                        <p className="cursor-pointer mb-2" onClick={() => navigate(`/post/${post._id}`)}>{post.content}</p>
+                        <img onClick={() => navigate(`/post/${post._id}`)} className="rounded-md cursor-pointer max-h-96 w-full object-contain" src={post.uploadImage} alt="" />
                     </div>
                 </div>
                 <ul className="px-4 py-1 flex gap-3 list-none">

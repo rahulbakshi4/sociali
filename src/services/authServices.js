@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const LoginService = async (formData) => {
     try {
@@ -17,6 +18,7 @@ export const LoginService = async (formData) => {
 
     } catch (error) {
         console.log('error', error)
+        toast.error("Invalid credentials", { position: "top-center" })
 
     }
 
@@ -31,6 +33,7 @@ export const SignUpService = async (formData) => {
     }
     catch (error) {
         console.log("error", error)
+        toast.error("Something went wrong", { position: "top-center" })
     }
 
 }

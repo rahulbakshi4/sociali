@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from "react-router-dom"
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { getUser } from "../../features/users/usersSlice"
 import { ExploreIcon, HomeIcon } from "../SVG/svg"
@@ -6,6 +6,8 @@ export const Navbar = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector((store) => store.auth)
+    const { allUsers } = useSelector((store) => store.users)
+    const currUser = allUsers?.find((user) => user._id === user?._id)
     return (
         <div className="fixed z-10 h-max w-full lg:top-0 md:top-0 bottom-0 ">
             <div className="bg-gray-50 border-b-2 border-b-slate-800">
@@ -22,7 +24,7 @@ export const Navbar = () => {
                             </NavLink>
 
                             <img onClick={() => navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user?._id } })}
-                                className="rounded-full w-7 h-7 cursor-pointer" src={user?.avatarUrl} alt="user avatar" />
+                                className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
                         </li>
                     </ul>
                 </nav>
@@ -36,7 +38,7 @@ export const Navbar = () => {
                     </NavLink>
 
                     <img onClick={() => { dispatch(getUser(user._id)); navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user._id } }) }}
-                        className="rounded-full w-8 h-8 cursor-pointer" src={user?.avatarUrl} alt="user avatar" />
+                        className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
                 </nav>
 
             </div>

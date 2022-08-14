@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { SignUpService } from '../../services/authServices'
 import { LoginService } from '../../services/authServices'
+import toast from 'react-hot-toast'
 const initialState = {
     token: JSON.parse(localStorage.getItem('userDetails'))?.token,
     user: JSON.parse(localStorage.getItem('userDetails'))?.user
@@ -42,7 +43,9 @@ export const authSlice = createSlice({
         [login.fulfilled]: (state, action) => {
             state.user = action.payload.foundUser;
             state.token = action.payload.encodedToken;
+            toast.success('Logged In Successfully!', { duration: 1500, position: 'bottom-center' });
         },
+
     }
 })
 export const { logout } = authSlice.actions

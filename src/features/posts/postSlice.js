@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast';
 import { addBookmarkService, addCommentService, deleteCommentService, dislikePostService, editCommentService, editPostService, getAllBookmarkService, getPostByIdService, likePostService, removeBookmarkService } from "../../services/postServices";
 import { deletePostService, getAllPostService, newPostService } from '../../services/postServices'
 
@@ -165,11 +166,7 @@ export const postSlice = createSlice({
         [newPost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
         },
-        [getAllPosts.pending]: (state, action) => {
-            state.postLoading = true
-        },
         [getAllPosts.fulfilled]: (state, action) => {
-            state.postLoading = false;
             state.allPosts = action.payload
         },
 
@@ -179,8 +176,16 @@ export const postSlice = createSlice({
         [editPost.fulfilled]: (state, action) => {
             state.allPosts = action.payload
         },
+        [getPostById.pending]: (state, action) => {
+            state.postLoading = true
+        },
         [getPostById.fulfilled]: (state, action) => {
+            state.postLoading = false
             state.post = action.payload
+        },
+        [getPostById.rejected]: (state, action) => {
+            state.postLoading = false
+            console.log(action.payload)
         },
         [getAllBookmarks.fulfilled]: (state, action) => {
             state.bookmarkedPosts = action.payload
