@@ -57,7 +57,7 @@ export const UserProfile = () => {
         <>
             <Navbar />
             {isUserLoading ? <div className="lg:mt-20 md:mt-20"><Loader /></div> : <div className="">
-                <div className="bg-white max-w-3xl lg:mt-20 md:mt-20 border-2 border-gray-800 mx-auto  rounded-lg">
+                <div className="bg-white max-w-3xl lg:mt-20 md:mt-20 border-2 border-gray-800 mx-auto mb-20 rounded-lg">
                     <div className="flex p-4 flex-col sm:flex-row">
                         <div className="flex lg:px-6 md:px-6 px-4 lg:basis-5/12 justify-center">
                             <img className="rounded-full w-44 h-44 object-cover " src={userProfile?.avatarUrl} alt="user avatar" />

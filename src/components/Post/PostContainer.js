@@ -41,8 +41,8 @@ export const PostContainer = (post) => {
                     <div className="flex-grow px-6">
                         <p onClick={() => viewProfile()} className="text-md cursor-pointer font-semibold">{post.name} <span className="font-normal text-gray-600">@{post.username}</span></p>
                         <p className="cursor-pointer mb-2" onClick={() => navigate(`/post/${post._id}`)}>{post.content}</p>
-                        <img onClick={() => navigate(`/post/${post._id}`)} className="rounded-md cursor-pointer max-h-96 w-full object-contain" src={post.uploadImage}
-                            alt={`image posted by ${post.name}`} />
+                        <img onClick={() => navigate(`/post/${post._id}`)} className="rounded-md cursor-pointer max-h-96 w-full object-contain" src={post.uploadImage} alt={
+                            post.uploadImage ? `image uploaded by ${post.name}` : ""} />
                     </div>
                 </div>
                 <ul className="px-4 py-1 flex gap-3 list-none">

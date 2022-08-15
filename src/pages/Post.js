@@ -23,7 +23,7 @@ export const Post = () => {
         <>
             <Navbar />
             {postLoading ? <div className="lg:mt-20 md:mt-20"> <Loader /> </div> : <div className="flex gap-6 items-start max-w-3xl mx-auto ">
-                {post && Object.keys(post).length > 0 ? <div className="flex-grow lg:mt-20 md:mt-20 ">
+                {post && Object.keys(post).length > 0 ? <div className="flex-grow lg:mt-20 md:mt-20 mb-20">
                     {post && <PostContainer {...post} />}
 
                     <div className="bg-white border-x-2 border-b-2 rounded-b-md  mb-4 border-gray-800">
