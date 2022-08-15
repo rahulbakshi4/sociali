@@ -28,17 +28,17 @@ export const Navbar = () => {
                         </li>
                     </ul>
                 </nav>
-                <nav className="lg:hidden border-t-2 border-t-slate-800 md:hidden flex mx-auto  max-w-6xl items-baseline justify-between pt-4 px-8 pb-4" >
+                <nav className="lg:hidden border-t-2 border-t-slate-800 md:hidden flex mx-auto  max-w-6xl items-center justify-between py-1 px-8" >
                     <NavLink to='/feed' className={({ isActive }) => isActive ? "p-2 rounded-full bg-light" : "p-2 rounded-full"}>
-                        <HomeIcon />
+                        <HomeIcon size={22} />
                     </NavLink>
 
                     <NavLink to='/explore' className={({ isActive }) => isActive ? "p-2 rounded-full bg-light" : "p-2 rounded-full"}>
-                        <ExploreIcon />
+                        <ExploreIcon size={22} />
                     </NavLink>
 
                     <img onClick={() => { dispatch(getUser(user._id)); navigate(`/profile/${user?.username}`, { replace: true, state: { _id: user._id } }) }}
-                        className={`rounded-full w-8 h-8 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
+                        className={`rounded-full w-6 h-6 cursor-pointer ${user === undefined && "hidden"}`} src={currUser?.avatarUrl || user.avatarUrl} alt="user avatar" />
                 </nav>
 
             </div>

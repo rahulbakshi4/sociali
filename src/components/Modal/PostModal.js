@@ -37,7 +37,7 @@ export const PostModal = () => {
         setPostEdited({ ...postData })
     }, [postData])
     return (
-        <div className="bg-white border-2 mx-auto lg:mt-40 md:mt-20 max-w-2xl border-gray-800 rounded-lg">
+        <div className="bg-white border-2 mx-auto lg:mt-30 md:mt-20 max-w-2xl border-gray-800 rounded-lg">
             <div className='px-2 flex justify-between border-b-2 border-b-gray-800 items-center'>
                 <p className="p-2 ">Edit Post</p>
                 <span onClick={() => {
@@ -50,10 +50,10 @@ export const PostModal = () => {
                      border-b-gray-800" value={postEdited?.content}
                     onChange={(e) => setPostEdited((prev) => ({ ...prev, content: e.target.value }))}></textarea>
                 {postEdited?.uploadImage ?
-                    <div className="mb-2 relative">
-                        <img className="w-2/4 h-auto mx-auto" src={postEdited?.uploadImage} alt="" />
+                    <div className="mb-2 relative p-2">
+                        <img className="w-2/4 max-h-96 object-contain rounded-md" src={postEdited?.uploadImage} alt={`image posted by ${postData?.name}`} />
                         <div onClick={() => setPostEdited((prev) => ({ ...prev, uploadImage: "" }))} className="absolute top-0 right-1 cursor-pointer flex shadow-icon
-                        justify-center p-2 mr-2 bg-white hover:bg-light rounded-full" >
+                        justify-center p-2 mr-2 bg-light hover:bg-white rounded-full" >
                             <CloseIcon size={16} />
                         </div>
                     </div> : null}
@@ -74,7 +74,7 @@ export const PostModal = () => {
                             dispatch(setPostModalState(false))
                         }} className="btn px-10">Discard</button>
                         <button onClick={() => saveHandler()}
-                            className="btn btn-dark px-10 disabled:btn-disabled" disabled={postEdited?.content === "" && postEdited?.uploadImage === ""}>Save</button>
+                            className="btn btn-dark px-10 disabled:btn-disabled" disabled={postEdited?.content?.trimEnd() === "" && postEdited?.uploadImage === ""}>Save</button>
                     </div>
 
                 </div>

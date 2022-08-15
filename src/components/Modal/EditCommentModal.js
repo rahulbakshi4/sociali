@@ -36,7 +36,7 @@ export const EditCommentModal = () => {
                         dispatch(getAllPosts())
                         toast.success("Comment edited successfully")
                     }}
-                        className="btn btn-dark px-10 disabled:btn-disabled" disabled={commentEdited?.text === ""}>Save</button>
+                        className="btn btn-dark px-10 disabled:btn-disabled" disabled={commentEdited?.text?.trimEnd() === ""}>Save</button>
                 </div>
             </div>
 

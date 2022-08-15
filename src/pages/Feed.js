@@ -48,8 +48,8 @@ export const Feed = () => {
                         <textarea name="" id="" className="w-full h-[18vh] resize-none p-4 focus:outline-none " placeholder="Whats happening?" value={post.content} onChange={(e) =>
                             setPost({ ...post, content: e.target.value })}></textarea>
                         {post.image !== "" ? <div className="p-4 relative">
-                            <img className="w-2/3 max-h-96 object-contain mx-auto" src={post.image} alt="" />
-                            <div onClick={() => setPost({ ...post, image: "" })} className="absolute top-1 right-1 cursor-pointer flex justify-center p-2 mr-2 bg-white hover:bg-light shadow-sm rounded-full" >
+                            <img className="w-2/3 max-h-96 object-contain rounded-md" src={post.image} alt={`image posted by ${post.name}`} />
+                            <div onClick={() => setPost({ ...post, image: "" })} className="absolute top-4 right-1 cursor-pointer flex justify-center p-2 mr-2 bg-light hover:bg-white shadow-icon rounded-full" >
                                 <CloseIcon size={16} />
                             </div>
                         </div> : null}
@@ -68,10 +68,10 @@ export const Feed = () => {
                                 dispatch(newPost({ token, post: { content: post.content, uploadImage: post.image } }));
                                 setPost({ content: "", image: "" })
                                 toast.success("Post created successfully", { duration: 1500 })
-                            }} className="btn btn-dark px-10 flex ml-auto disabled:btn-disabled" disabled={post.content === "" && post.image === ""}>Post</button>
+                            }} className="btn btn-dark px-10 flex ml-auto disabled:btn-disabled" disabled={post.content.trimEnd() === "" && post.image === ""}>Post</button>
                         </div>
                     </div>
-                    <div className="flex-grow lg:mt-16 md:mt-16 ">
+                    <div className="flex-grow lg:mt-16 md:mt-16 last:mb-20 ">
                         {postsForFeed?.reverse().map((post) => (<PostContainer key={post.id} {...post} />))}
                     </div>
 

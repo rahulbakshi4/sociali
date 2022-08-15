@@ -26,12 +26,13 @@ export const Post = () => {
                 {post && Object.keys(post).length > 0 ? <div className="flex-grow lg:mt-20 md:mt-20 ">
                     {post && <PostContainer {...post} />}
 
-                    <div className="bg-white border-x-2 border-b-2 rounded-b-md pt-1 mb-4 border-gray-800">
+                    <div className="bg-white border-x-2 border-b-2 rounded-b-md  mb-4 border-gray-800">
                         {post?.comments?.map((comment) => <CommentContainer key={comment._id} {...comment} />)}
 
                         <div className="flex align-baseline">
-                            <input name="" id="" className="w-full h-auto resize-none p-2 focus:outline-none border-t-2
-                     border-gray-800" placeholder="Add comment here" value={userComment} onChange={(e) =>
+                            <input name="" id="" className={`w-full h-auto resize-none p-2 focus:outline-none 
+                            ${post?.comments?.length > 0 && `border-t-2`}
+                     border-gray-800`} placeholder="Add comment here" value={userComment} onChange={(e) =>
                                     setUserComment(e.target.value)}></input>
                             <button onClick={() => {
                                 dispatch(addComment(
@@ -43,7 +44,7 @@ export const Post = () => {
                                 setUserComment("")
                                 dispatch(getAllPosts())
                                 toast.success("Comment added successfully")
-                            }} className="bg-black text-white px-10 disabled:btn-disabled" disabled={userComment === ""}>Post</button>
+                            }} className="bg-black text-white px-10 disabled:btn-disabled" disabled={userComment.trimEnd() === ""}>Post</button>
                         </div>
                     </div>
                 </div> : null}
